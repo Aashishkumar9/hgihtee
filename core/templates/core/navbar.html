@@ -1,0 +1,62 @@
+{% load static %}
+<div class="container">
+  <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-black p-4">
+        <div class="ddss text-white text-center">
+          
+            
+              
+                <a href="{% url 'home' %}" class="nav-link text-white"><h3><i>HOME</i></h3></a>
+                <a href="{% url 'lookbook' %}" class="nav-link text-white"><h3><i>LOOKBOOK</i></h3></a>
+              
+                <a href="{% url 'about' %}" class="nav-link text-white"><h3><i>ABOUT US</i></h3></a>
+                <!-- <a href="{% url 'home' %}" class="nav-link text-white"><h3><i>BEST SELLER</i></h3></a> -->
+                <a href="{% url 'orders' %}" class="nav-link text-white"><h3><i>YOUR ORDERS</i></h3></a>
+               
+
+                <a href="{% url 'logout' %}" class="nav-link text-white"><h3><i>LOGOUT</i></h3></a>
+            
+
+                {% comment %} <h3><i>SALE</i></h3> {% endcomment %}
+          
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-black">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> 
+      {% comment %} <h3 class="text-center text-white googlefont">HGIH</h3> {% endcomment %}
+      <img src="{% static 'core/images/HGIH.png' %}" alt="">
+      {% if request.user.is_authenticated %}
+     
+    <div class="pl-2">
+        <i class="sear fa-solid fa-magnifying-glass fa-lg"></i>
+        <i class="sear fa-solid fa-address-book fa-lg"></i>
+        <i class="sear fa-solid fa-heart fa-lg"></i>
+        {% comment %} <i class="sear dd fa-solid fa-bag-shopping fa-lg m-2"></i> {% endcomment %}
+        <a href="{% url 'showcart' %}" class="text-white"><i class="sear dd fa-solid fa-bag-shopping fa-lg m-1"></i></i></a>
+
+
+        
+        {% comment %} <a href="{% url 'logout' %}" class="text-white"><i class="fa-solid fa-arrow-right-from-bracket"></i></a> {% endcomment %}
+        {% else %}
+        <p>
+          <a href="{% url 'login' %}" class="text-white"><button type="button" class="btn btn-outline-info">Login</button></a>
+          
+          {% comment %} <a href="{% url 'customerregistration' %}" class="text-white"><button type="button" class="btn btn-outline-info">Registration</button></a> {% endcomment %}
+        </p>
+      
+
+        {% comment %} <a href="{% url 'login' %}" class="text-white">Login</a> {% endcomment %}
+
+
+    </div>
+    {% endif %}
+
+    </nav>
+  </div>
+
+</div>
+</div>

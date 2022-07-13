@@ -1,0 +1,124 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block cart %}
+<div>
+    {% comment %} start nav bar {% endcomment %}
+    {% include 'core/navbar.html' %}
+{% comment %} end nav bar {% endcomment %}
+<div class="container text-white bg-dark my-5">
+    <div class="row bg-dark">
+     <h1 class="text-center mb-5 mt-5">Shopping Cart</h1>
+     <div class="col-sm-8">
+     <div class="card">
+      <div class="card-body bg-dark">
+       <h3 class="text-center">Cart</h3>
+       {% for cart in cart %}
+   <hr>
+       <div class="row bg-dark">
+        <div class="col-sm-3 text-center align-self-center"><img src="{{cart.product.product_img.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
+        <div class="col-sm-9">
+         <div>
+          <h5>{{cart.product.title|capfirst}}</h5>
+          <p class="mb-2 text-muted small">{{cart.product.discripition}}</p>
+          <div class="my-3">
+           <label for="quantity"></label>
+           <a class="minus-cart btn text-white" pid="{{cart.product.id}}"><i class="fas fa-minus-square fa-lg"></i></a>
+                
+                 <span id="quantity">
+                  {{cart.quantity}}
+             </span>
+               <a class="plus-cart btn text-white" pid="{{cart.product.id}}"><i class="fas fa-plus-square fa-lg"></i></a>
+               <div class="mx-4 mt-3">{{forms.as_p}}</div>
+          </div> 
+          
+          <div class="d-flex justify-content-between">
+   
+           <a type="submit" class="btn btn-sm btn-secondary mr-3 remove-cart" pid="{{cart.product.id}}" href="">Remove Cart</a></button>          
+           
+   
+           <p class="mb-0"><span><strong>{{cart.product.selling_price}}</strong></span></p>
+          </div>
+         </div>
+        </div>
+       </div>
+       {% endfor %}
+       
+       <hr class="text-muted">
+       <div class="row my-5">
+        <div class="col-sm-3 text-center align-self-center"> </div>
+        <div class="col-sm-9"> 
+         <div>
+         
+         </div>
+        </div>
+       </div>
+      </div>
+      </div>
+     </div>
+   
+     <div class="col-sm-4">
+      <div class="card">
+       <div class="card-body bg-dark">
+         <h3>The Total Amount of</h3>
+         <ul class="list-group bg-dark">
+          <li class="list-group-item bg-dark d-flex justify-content-between align-items-center border-0 px-0 pb-0">Amount<span id = "amount">{{amount}}</span></li>
+          <li class="list-group-item bg-dark d-flex justify-content-between align-items-center px-0">Shipping<span>{{shopping_amount}}</span></li>
+          <li class="list-group-item bg-dark d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+           <div>
+              <strong>Total</strong> <small>(including VAT)</small>
+            </div>
+            <span><strong><strong id="totalamount">{{total_amount}}</strong></strong></span>
+          </li>
+         </ul>
+      <div class="d-grid"><a href="{% url 'checkout' %}" class="btn btn-primary">Place Order</a></div>
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       </div>
+      </div>
+     </div>
+     
+    </div>
+   </div>
+   <div class="container">
+    <div class="row ">
+     <div class="col-sm-8">
+      <div class="card">
+       <div class="card-body bg-dark">
+         <h5 class="mb-4">We accept</h5>
+         <img src="{% static 'core/images/payment.png' %}" alt="" class="img-fluid">
+       </div>
+     </div>
+     </div>
+    </div>
+   </div>
+    <!-- Start Footer -->
+    {% include 'core/footer.html' %}
+{% comment %} footer end {% endcomment %}
+
+
+{% endblock cart %}

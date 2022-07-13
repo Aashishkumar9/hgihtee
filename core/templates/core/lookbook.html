@@ -1,0 +1,112 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block lookbook %}
+<div>
+    {% comment %} start nav bar {% endcomment %}
+    {% include 'core/navbar.html' %}
+{% comment %} end nav bar {% endcomment %}
+
+{% comment %} <h1 class="shadow-lg p-3 mb-5 bg-black text-white rounded text-center"><i>LOOKBOOK</i></h1> {% endcomment %}
+
+{% comment %} <div class="container">
+
+<div class="row mb-3 mt-5">
+        {% for el in data %}
+        <div class="col-sm-4 mt-2 mb-3">
+            <div class="product-card text-white">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="{{el.product_img.url}}" class="product-thumb" alt="">
+                    <button class="card-btn">add to wishlist</button>
+                </div>
+                  <p class="card-title|capfirst">{{el.title|capfirst}}</p>
+                  <p>Rs. {{el.selling_price}} <small class="fw-light text-decoration-line-through">{{el.discounted_price}}</small></p> <br>
+                  <a href="{% url 'product-detail' el.id %}" class="btn btn-danger">Bye Now</a>
+
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div> 
+
+</div>  {% endcomment %}
+{% comment %}  {% endcomment %}
+
+
+
+{% comment %} <div class=" mt-5">
+    
+    <div class="row container text-center">
+      <div class="col-sm-4">
+        {% for el in data %}
+<div>
+  
+  <div class="product-card text-white">
+    <div class="product-image">
+        <span class="discount-tag">50% off</span>
+        <img src="{{el.product_img.url}}" class="product-thumb" alt="">
+        <a href="{% url 'product-detail' el.id %}"><button class="card-btn">Bye No  w</button></a>
+        <a href="{% url 'product-detail' el.id %}" class="card-btn">Bye Now</a>
+
+    </div class="border border-light ">
+      <p class="card-title|capfirst mt-1">{{el.title|capfirst}}</p>
+      <p>Rs. {{el.selling_price}} <small class="fw-light text-decoration-line-through">{{el.discounted_price}}</small></p>
+      
+      <a href="{% url 'product-detail' el.id %}" class="btn btn-danger">Bye Now</a>
+      <a href="{% url 'product-detail' el.id %}"><button type="button" class="btn btn-lg btn-block btn-outline-success text-center">Add TO Bag</button></a>
+
+    </div>
+</div>
+</div>
+    {% endfor %}
+
+    </div>
+  </div> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+    <div class="row mb-3">
+        {% for el in data %}
+        <div class="col-sm-4 mt-2 mb-3 ">
+            <div class="card" style="width: 14rem;">
+                <img src="{{el.product_img.url}}" class="product-thumb" alt="...">
+                <div class="card-body bg-dark text-white">
+                  <h5 class="card-title|capfirst">{{el.title|capfirst}}</h5>
+                 
+                  <h4>Rs. {{el.selling_price}} <small class="fw-light text-decoration-line-through">{{el.discounted_price}}</small></h4> <br>
+                  <a href="{% url 'product-detail' el.id %}"><button type="button" class="btn  btn-block btn-outline-success text-center">Add TO Bag</button></a>
+
+
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+
+
+    <!-- Start Footer -->
+    {% include 'core/footer.html' %}
+{% comment %} footer end {% endcomment %}
+
+
+{% endblock lookbook %}

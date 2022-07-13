@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block profile %}
+<div>
+    {% comment %} start nav bar {% endcomment %}
+    {% include 'core/navbar.html' %}
+{% comment %} end nav bar {% endcomment %}
+
+<div class="my-5 text-white">
+    <div class="row">
+     {% comment %} <h3 class="text-capitalize">Welcome {{request.user}}</h3> {% endcomment %}
+     <div class="col-sm-2 border-end">
+      <ul class="list-unstyled">
+       {% comment %} <li class="d-grid"><a href="{% url 'profile' %}" class="btn {{active}} ">Profile</a></li> {% endcomment %}
+       {% comment %} <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li> {% endcomment %}
+      </ul>
+     </div>
+     <div class="col-sm-8 offset-sm-1">
+       <form action="" method="POST" novalidate class="shadow p-5 bg-dark text-white">
+         <div class="mb-3">
+            {% csrf_token %}
+            {% for form in form %}
+            {{form.label_tag}}{{form}}{{form.errors}}<br><br>
+            {% endfor %}
+         <div class="text-end">
+          <button type="submit" class="btn btn-primary">Submit</button>
+         </div>
+         <br>
+         <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="{% url 'login' %}"
+            class="text-danger">Login Now</a> </small></div>
+         {% if form.non_field_errors %}
+         {% for error in form.non_field_errors %}
+         <p class="alert alert-danger my-3">{{error}}</p>
+         {% endfor %}
+         {% endif %}
+        </form>
+     </div>
+    </div>
+   </div>
+    <!-- Start Footer -->
+    {% include 'core/footer.html' %}
+{% comment %} footer end {% endcomment %}
+
+
+{% endblock profile %}

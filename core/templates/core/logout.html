@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block about %}
+<div>
+    {% comment %} start nav bar {% endcomment %}
+    {% include 'core/navbar.html' %}
+{% comment %} end nav bar {% endcomment %}
+
+
+    <!-- Start Footer -->
+    {% include 'core/footer.html' %}
+{% comment %} footer end {% endcomment %}
+
+
+{% endblock about %}

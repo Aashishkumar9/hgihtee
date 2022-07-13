@@ -1,0 +1,147 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block chackout %}
+<div>
+    {% comment %} start nav bar {% endcomment %}
+    {% include 'core/navbar.html' %}
+{% comment %} end nav bar {% endcomment %}
+
+
+
+
+
+
+
+<div class="container text-white">
+  <div class="row mt-5">
+   <div class="col-sm-6">
+     <h4>Order Summary</h4>
+     <hr>
+     {% for cart in cart %}
+       <div class="card mb-2">
+         <div class="card-body bg-dark">
+           <h5>Product:{{cart.product.title}}</h5>
+           <p>Quantity: {{cart.quantity}}</p>
+           <p class="fw-bold">Price:{{cart.product.selling_price}}</p>
+         </div>
+       </div>
+       {% endfor %}
+       <p class='fw-bold'>Total Cost + Rs. 70 = {{total_amount}}</p>
+     <small>Term and Condition: Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, ullam saepe! Iure optio repellat dolor velit, minus rem. Facilis cumque neque numquam laboriosam, accusantium adipisci nisi nihil in et quis?</small>
+   </div>
+   <div class="col-sm-4 offset-sm-1">
+     <h4>Please Insert Address</h4>
+     <hr>
+     
+     <form action="/paymentdone">
+       {% for add i address %}
+       <div class="card">
+         <div class="card-body">
+         <h5>{{add.name}}</h5>
+         <p>{{add.state}},{{add.address}},{{add.pin_code}}</p>
+         </div>
+       </div>
+         <div class="form-check mt-2 mb-5">
+           <input class="form-check-input" type="radio"  name='custid' id="custadd{{forloop.counter}}" value="{{add.id}}">
+           <label class="form-check-label fw-bold" for="">
+             Address: {{forloop.counter}}</label>
+            
+         </div>
+         {% endfor %}
+         <div class="text-end">
+           <div id="paypal-button-container"></div>
+         </div>
+         <button type="submit" class="btn btn-primary">Continoue To Payment</button>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+          
+<div>
+  <button id="rzp-button1">Pay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_PzLjiBKSHu6A5T", // Enter the Key ID generated from the Dashboard
+    "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Acme Corp",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+       </form>
+     </div>
+   </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Start Footer -->
+    {% include 'core/footer.html' %}
+{% comment %} footer end {% endcomment %}
+
+
+{% endblock chackout %}

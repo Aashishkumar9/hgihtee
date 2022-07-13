@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block login %}
+<div>
+    {% comment %} start nav bar {% endcomment %}
+    {% include 'core/navbar.html' %}
+{% comment %} end nav bar {% endcomment %}
+<div class="">
+
+  
+    <div class="text-white mt-5 container">
+        <div class="row my-3">
+         <div class="col-sm-6 offset-sm-3">
+          <h3 class="text-center">Login</h3>
+<hr>
+          <form action="" method="POST" novalidate class="shadow p-5 bg-dark text-white">
+           <div class="mb-3">
+              {% csrf_token %}
+             {% for form in form %}
+             {{form.label_tag}}{{form}}{{form.errors}}<br><br>
+             {% endfor %}
+             {% comment %} <a href="{% url 'password_reset' %}">Forget Password?</a> {% endcomment %}
+           <div class="text-end">
+            <button type="submit" class="btn btn-primary">Submit</button>
+           </div>
+           <br>
+           <div class="text-center text-primary fw-bold"><small>New User ? <a href="{% url 'customerregistration' %}"
+              class="text-danger">
+              sign up</a> </small></div>
+              
+           {% if form.non_field_errors %}
+           {% for error in form.non_field_errors %}
+           <p class="alert alert-danger my-3">{{error}}</p>
+           {% endfor %}
+           {% endif %}
+          </form>
+         </div>
+        </div>
+    </div>
+
+
+    
+</div>
+
+
+
+
+    <!-- Start Footer -->
+    {% include 'core/footer.html' %}
+{% comment %} footer end {% endcomment %}
+
+
+{% endblock login %}

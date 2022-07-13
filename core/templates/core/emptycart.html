@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block about %}
+<div>
+    {% comment %} start nav bar {% endcomment %}
+    {% include 'core/navbar.html' %}
+{% comment %} end nav bar {% endcomment %}
+<div class="text-center mt-5">
+    <img src="{% static 'core/images/lf30_fulewbkv.json].png' %}" alt="" class="rounded float-left  mr-3  m-1" height=340px width=360px>
+
+</div>
+<div class="text-center mt-3">
+    <a href="{% url 'lookbook' %}" class="text-white"><button type="button" class="btn btn-outline-light">Continue To Shipping</button></a>
+
+</div>
+
+    <!-- Start Footer -->
+    {% include 'core/footer.html' %}
+{% comment %} footer end {% endcomment %}
+
+
+{% endblock about %}

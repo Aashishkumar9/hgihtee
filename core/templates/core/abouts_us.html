@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block about %}
+<div>
+    {% comment %} start nav bar {% endcomment %}
+    {% include 'core/navbar.html' %}
+{% comment %} end nav bar {% endcomment %}
+<div class="container">
+    <div class="my-5 text-white">
+        <div class="row">
+         <div class="col-sm-6 offset-sm-1 mt-3">
+          <h1><i class="dds fa-solid fa-angles-right"></i> ABOUTS US</h1>
+          
+          <span class="mt-4" style="font-family: Arial"><h5>High streetwear</h5>
+           <span> <b>About the brand:  </b></span>
+            HGIH is a genderless fashion clothing brand that believes in creating one for all, the clothing draws inspiration from Indian gen-z culture and believes in creating some that people can relate with and stand behind. HGIH clothing is very out there and bold in terms of graphics and design keeping very in tune with the pop culture references. 
+            We have pieces that stay with you and create an impact with our bold colors and ideas. We encourage you to break stereotypes by expressing yourself through our clothing.
+            </span>
+          </div>
+         <div class="col-sm-5 text-center align-self-center">
+            <img src="{% static 'core/images/Final.jpg' %}" alt="" class="img-fluid img-thumbnail" height="70px">
+           </div>
+        </div>
+       </div>
+</div>
+
+
+
+
+    <!-- Start Footer -->
+    {% include 'core/footer.html' %}
+{% comment %} footer end {% endcomment %}
+
+
+{% endblock about %}
